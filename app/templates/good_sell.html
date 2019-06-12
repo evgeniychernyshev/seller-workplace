@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Продажа</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <br>
+            <h1>Продажа</h1>
+            <br>
+            <form action="{{ url_for('good_sell', good_id=good.id) }}" method="POST">
+                <div class="jumbotron">
+                    <h3>{{ good.name }}</h3>
+                    <p>Цена: {{ good.price }}</p>
+                    {% if good.count > 0 %}
+                    <p>Остаток на складе: {{ good.count }} шт</p>
+                    {% else %}
+                    <p class="text-danger">Товара нет в наличии</p>
+                    {% endif %}
+                    <p>Цвет: {{ good.color }}</p>
+                    <p>Память: {{ good.memory }}Гб / {{ good.ram }}Гб</p>
+                    <p>Диагональ экрана: {{ good.screen }}"</p>
+                    <p>Камера: {{ good.camera }}Мп</p>
+                    <p>
+                        <label for="CountInput">Введите количество:</label>
+                        <input type="munber" id="CountInput" class="form-control" value="1" name="count" required>
+                        <br>
+                        {% if good.count > 0 %}
+                        <button class="btn btn-primary">Продать</button>
+                        {% else %} >
+                        <button class="btn btn-secondary" disabled>Продать</button>
+                        {% endif%}
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-primary">Назад</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

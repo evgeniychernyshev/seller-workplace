@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <br>
+            <h1>Редактировать товар</h1>
+            <br>
+            <form action="{{ url_for('good_save', good_id=good.id) }}" method="POST" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="NameInput">Название:</label>
+                        <input type="text" id="NameInput" class="form-control" value="{{ good.name }}" name="name" required>
+                    </div>
+                </div>
+                <div class="form-row mt-2">
+                    <div class="col">
+                        <label for="PriceInput">Цена:</label>
+                        <input type="text" id="PriceInput" class="form-control" value="{{ good.price }}" name="price" required>
+                    </div>
+                    <div class="col">
+                        <label for="HitTrue">Хит:</label>
+                        {% if good.hit %}
+                        <input type="text" id="HitTrue" class="form-control" value="Да" name="hit" required>
+                        {% else %}
+                        <input type="text" id="HitFalse" class="form-control" value="Нет" name="hit" required>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="form-row mt-2">
+                    <div class="col">
+                        <label for="CountInput">Остаток на складе:</label>
+                        <input type="text" id="CountInput" class="form-control" value="{{ good.count }}" name="count" required>
+                    </div>
+                    <div class="col">
+                        <label for="ColorInput">Цвет:</label>
+                        <input type="text" id="ColorInput" class="form-control" value="{{ good.color }}" name="color" required>
+                    </div>
+                </div>
+                 <div class="form-row mt-2">
+                    <div class="col">
+                        <label for="MemoryInput">Встроенная память:</label>
+                        <input type="text" id="MemoryInput" class="form-control" value="{{ good.memory }}" name="memory" required>
+                    </div>
+                    <div class="col">
+                        <label for="RamInput">Оперативная память:</label>
+                        <input type="text" id="RamInput" class="form-control" value="{{ good.ram }}" name="ram" required>
+                    </div>
+                </div>
+                <div class="form-row mt-2">
+                    <div class="col">
+                        <label for="ScreenInput">Диагональ экрана:</label>
+                        <input type="text" id="ScreenInput" class="form-control" value="{{ good.screen }}" name="screen" required>
+                    </div>
+                    <div class="col">
+                        <label for="CameraInput">Камера:</label>
+                        <input type="text" id="CameraInput" class="form-control" value="{{ good.camera }}" name="camera" required>
+                    </div>
+                </div>
+                <div class="form-row mt-4">
+                    <div class="col">
+                        <input type="file" accept="image/png" id="ImageInput" name="img">
+                        <div class="alert alert-secondary mt-2" role="alert">Размер изображения 368х160px</div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <button class="btn btn-primary">Сохранить</button>
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-primary">Назад</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
